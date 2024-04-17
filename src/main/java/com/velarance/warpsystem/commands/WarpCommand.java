@@ -28,10 +28,10 @@ public class WarpCommand extends BukkitCommand {
         if (args.length < 1) {
             player.sendMessage(WarpManager.COMMAND_PREFIX +
                     "Используйте:\n" +
-                    "/warp create <название_варпа>\n" +
-                    "/warp add <название_варпа> <ник_игрока>\n" +
-                    "/warp remove <название_варпа>\n" +
-                    "/warp teleport <название_варпа>"
+                    "/warp create <название_варпа> - создаёт варп\n" +
+                    "/warp add <название_варпа> <ник_игрока> - позволяет добавить игрока в список игроков, которые могут телепортироваться на этот варп\n" +
+                    "/warp remove <название_варпа> - удаляет варп, если он принадлежит игроку, который исполняет команду\n" +
+                    "/warp teleport <название_варпа> - телепортирует на точку варпа"
             );
             return false;
         }
@@ -51,7 +51,7 @@ public class WarpCommand extends BukkitCommand {
                         player.sendMessage(WarpManager.COMMAND_PREFIX + "Варп " + warpName + " уже существует");
                     }
                 } else {
-                    player.sendMessage(WarpManager.COMMAND_PREFIX + "Используйте: /warp create <название_варпа>");
+                    player.sendMessage(WarpManager.COMMAND_PREFIX + "Используйте: /warp create <название_варпа> - создаёт варп");
                 }
             }
             case "add" -> {
@@ -78,7 +78,7 @@ public class WarpCommand extends BukkitCommand {
                     warpManager.addPlayerToWarp(warpName, playerName);
                     player.sendMessage(WarpManager.COMMAND_PREFIX + "Игроку " + playerName + " был выдан доступ к варпу " + warpName + "!");
                 } else {
-                    player.sendMessage(WarpManager.COMMAND_PREFIX + "Используйте: /warp add <название_варпа> <ник_игрока>");
+                    player.sendMessage(WarpManager.COMMAND_PREFIX + "Используйте: /warp add <название_варпа> <ник_игрока> - позволяет добавить игрока в список игроков, которые могут телепортироваться на этот варп");
                 }
             }
             case "remove" -> {
@@ -95,7 +95,7 @@ public class WarpCommand extends BukkitCommand {
                     warpManager.removeWarp(warpName);
                     player.sendMessage(WarpManager.COMMAND_PREFIX + "Варп " + warpName + " удален!");
                 } else {
-                    player.sendMessage(WarpManager.COMMAND_PREFIX + "Используйте: /warp remove <название_варпа>");
+                    player.sendMessage(WarpManager.COMMAND_PREFIX + "Используйте: /warp remove <название_варпа> - удаляет варп, если он принадлежит игроку, который исполняет команду");
                 }
             }
             case "teleport" -> {
@@ -112,15 +112,15 @@ public class WarpCommand extends BukkitCommand {
                     warpManager.teleportToWarp(player, warpName);
                     player.sendMessage(WarpManager.COMMAND_PREFIX + "Вы успешно телепортировались на варп " + warpName);
                 } else {
-                    player.sendMessage(WarpManager.COMMAND_PREFIX + "Используйте: /warp teleport <название_варпа>");
+                    player.sendMessage(WarpManager.COMMAND_PREFIX + "Используйте: /warp teleport <название_варпа> - телепортирует на точку варпа");
                 }
             }
             default -> player.sendMessage(WarpManager.COMMAND_PREFIX +
                     "Используйте:\n" +
-                    "/warp create <название_варпа>\n" +
-                    "/warp add <название_варпа> <ник_игрока>\n" +
-                    "/warp remove <название_варпа>\n" +
-                    "/warp teleport <название_варпа>"
+                    "/warp create <название_варпа> - создаёт варп\n" +
+                    "/warp add <название_варпа> <ник_игрока> - позволяет добавить игрока в список игроков, которые могут телепортироваться на этот варп\n" +
+                    "/warp remove <название_варпа> - удаляет варп, если он принадлежит игроку, который исполняет команду\n" +
+                    "/warp teleport <название_варпа> - телепортирует на точку варпа"
             );
         }
 
