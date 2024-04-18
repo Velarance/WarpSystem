@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,8 +32,18 @@ public class WarpManager {
         }
     }
 
-    public boolean isExistWarp(String name) {
-        return warps.containsKey(name.toLowerCase());
+    public boolean isExistWarp(String warpName) {
+        return warps.containsKey(warpName.toLowerCase());
+    }
+
+    public ArrayList<Warp> getPlayerWarps(String playerName) {
+        ArrayList<Warp> playerWarps = new ArrayList<>();
+        for (Warp warp : warps.values()) {
+            if (warp.getOwner().equalsIgnoreCase(playerName)) {
+                playerWarps.add(warp);
+            }
+        }
+        return playerWarps;
     }
 
     public boolean createWarp(String warpName, String owner, Location location) {
@@ -58,8 +69,8 @@ public class WarpManager {
         }
     }
 
-    public Warp getWarp(String name) {
-        return warps.get(name.toLowerCase());
+    public Warp getWarp(String warpName) {
+        return warps.get(warpName.toLowerCase());
     }
 
     public void addPlayerToWarp(String warpName, String player) {
